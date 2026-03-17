@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Book a Ride</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI',sans-serif;
+            background: linear-gradient(135deg,#020617,#0f172a,#1e293b);
+            background-size: 400% 400%;
+            animation: bgMove 8s infinite alternate;
+        }
+
+        @@keyframes bgMove {
+            0% {
+                background-position: left;
+            }
+
+            100% {
+                background-position: right;
+            }
+        }
+
+        .ride-container {
+            background: #111827;
+            padding: 45px;
+            width: 420px;
+            border-radius: 15px;
+            box-shadow: 0 0 35px rgba(255,106,0,0.6);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #ff6a00;
+        }
+
+        .ride-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .ride-form input,
+            .ride-form select {
+                padding: 13px;
+                margin-bottom: 16px;
+                border: none;
+                border-radius: 8px;
+                background: #1f2937;
+                color: white;
+                font-size: 15px;
+            }
+
+                .ride-form input:focus,
+                .ride-form select:focus {
+                    outline: none;
+                    box-shadow: 0 0 12px #ff6a00;
+                }
+
+        button {
+            background: linear-gradient(45deg,#ff6a00,#ff3c00);
+            border: none;
+            padding: 13px;
+            font-size: 16px;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+            button:hover {
+                transform: scale(1.08);
+                box-shadow: 0 0 20px #ff6a00;
+            }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="ride-container">
+
+        <h1>🚗 Book Your Ride</h1>
+
+        <form class="ride-form" asp-controller="Ride" asp-action="BookCar" method="post">
+
+            <input type="text" name="Name" placeholder="Your Name" required>
+
+            <input type="email" name="Email" placeholder="Email Address" required>
+
+            <select name="Car" required>
+                <option value="">Select Car</option>
+                <option>Lamborghini Aventador</option>
+                <option>Ferrari 488</option>
+                <option>Bugatti Chiron</option>
+                <option>Nissan GTR</option>
+                <option>McLaren P1</option>
+            </select>
+
+            <input type="date" name="RideDate" required>
+
+            <button type="submit">Confirm Ride</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
